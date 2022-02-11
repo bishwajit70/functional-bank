@@ -1,26 +1,44 @@
 
-// deposit handel adding
-document.getElementById('deposit-btn').addEventListener('click', function () {
+
+
+function getInputValue() {
     const depositInput = document.getElementById('deposit-input');
     const depositAmountText = depositInput.value;
     const depositAmount = parseFloat(depositAmountText);
-    // console.log(depositAmount);
+    // clear Deposit input value 
+    depositInput.value = '';
+    
+    return depositAmount;
+    
+}
+
+
+
+// deposit handel adding
+document.getElementById('deposit-btn').addEventListener('click', function () {
+    /* const depositInput = document.getElementById('deposit-input');
+    const depositAmountText = depositInput.value;
+    const depositAmount = parseFloat(depositAmountText); */
+
+    const depositAmount = getInputValue();
+
     // get current deposit 
     const depositTotal = document.getElementById('deposit-total');
-    // console.log(depositTotal);
     const depositTotalText = depositTotal.innerText;
     const previousDepositTotal = parseFloat(depositTotalText);
+
     // set total amount as deposit-total 
     depositTotal.innerText = previousDepositTotal + depositAmount;
-    // console.log(depositTotalText);
+
     // update balance 
     const balanceTotal = document.getElementById('balance-total');
     const balanceTotalText = balanceTotal.innerText;
     const previousBalanceTotal = parseFloat(balanceTotalText);
+
     // set balance total 
     balanceTotal.innerText = previousBalanceTotal + depositAmount;
-    // clear Deposit input value 
-    depositInput.value = '';
+
+
 });
 // withdraw handel adding
 document.getElementById('withdraw-btn').addEventListener('click', function () {

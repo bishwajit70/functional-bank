@@ -19,6 +19,19 @@ function updateTotalField(totalFieldId, amount) {
     totalField.innerText = previousTotal + amount;
 }
 
+function updateBalance(amount, isAdd) {
+    const balanceTotal = document.getElementById('balance-total');
+    const balanceTotalText = balanceTotal.innerText;
+    const previousBalanceTotal = parseFloat(balanceTotalText);
+    if (isAdd == true) {
+        balanceTotal.innerText = previousBalanceTotal + amount;
+    }
+    else {
+        balanceTotal.innerText = previousBalanceTotal - amount;
+    }
+
+
+}
 
 
 // deposit handel adding
@@ -31,6 +44,7 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
 
     const depositAmount = getInputValue('deposit-input');
     updateTotalField('deposit-total', depositAmount);
+    updateBalance(depositAmount, true);
 
     // get and updated current deposit total
     /* 
@@ -43,12 +57,11 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
     */
 
     // update balance 
-    const balanceTotal = document.getElementById('balance-total');
+    /* const balanceTotal = document.getElementById('balance-total');
     const balanceTotalText = balanceTotal.innerText;
     const previousBalanceTotal = parseFloat(balanceTotalText);
-
     // set balance total 
-    balanceTotal.innerText = previousBalanceTotal + depositAmount;
+    balanceTotal.innerText = previousBalanceTotal + depositAmount; */
 
 
 });
@@ -63,6 +76,7 @@ document.getElementById('withdraw-btn').addEventListener('click', function () {
 
     const withdrawAmount = getInputValue('withdraw-input')
     updateTotalField('withdraw-total', withdrawAmount);
+    updateBalance(withdrawAmount, false);
 
     // get and update withdraw total
     /*     
@@ -76,9 +90,13 @@ document.getElementById('withdraw-btn').addEventListener('click', function () {
 
 
     // update Balance after withdraw
+    /*  
     const balanceTotal = document.getElementById('balance-total');
     const balanceTotalText = balanceTotal.innerText;
     const previousBalanceTotal = parseFloat(balanceTotalText);
     // set balance total 
-    balanceTotal.innerText = previousBalanceTotal - withdrawAmount;
+    balanceTotal.innerText = previousBalanceTotal - withdrawAmount; 
+    */
+
+
 })
